@@ -1,0 +1,12 @@
+{% if sl_list %}
+<ul>
+  {% for sl in sl_list %}
+  <li> {{ sl.item_set.all }}
+    <ul>
+    {% for item in sl.item_set.all %}
+    <li> {{ item.name }} </li>
+    {% endfor %}
+    </ul>
+  </li>
+  {% endfor %}
+{% endif %}

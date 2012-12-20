@@ -1,0 +1,14 @@
+{% extends "list/base.html" %}
+{% block content %}
+{% if sl_list %}
+
+<ul class="nav nav-list">
+  {% for sl in sl_list %}
+  <li><a href="/lists/{{ sl.name }}/"><i class="icon-list"></i> {{ sl.name }}</a></li>
+  {% endfor %}
+  {% endif %}
+  
+  {% endblock %}
+  
+
+

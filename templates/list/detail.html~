@@ -1,0 +1,15 @@
+{% if list %}
+<table border="1">
+  <tr>
+    <th>Item</th>
+    <th>Amount</th>
+  </tr>
+  {% for item in list.item_set.all %}
+  <tr>
+    <td>{{ item.name }}</td>
+    <td>{{ item.amount }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+  

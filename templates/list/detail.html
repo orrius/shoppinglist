@@ -1,0 +1,29 @@
+{% extends "list/base.html" %}
+{% block content %}
+{% if list %}
+<table class="table table-condensed table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in list.item_set.all %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td class="amount edit">{{ item.amount }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+
+<script src="{{ STATIC_URL }}jquery.jeditable.js"></script>
+<script>
+  $('.edit').editable('http://www.dn.se'), {
+  type : 'number'};
+</script>
+
+{% endblock %}
