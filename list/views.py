@@ -15,3 +15,7 @@ def detail(request, list_name):
     #return render_to_response('list/detail.html', {'list': p})
 
 
+def editamount(request, pk, amount):
+    p = get_object_or_404(Item,id=pk)
+    p.update(amount=amount)
+    return HttpResponse(200)

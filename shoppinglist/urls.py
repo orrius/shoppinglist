@@ -9,6 +9,7 @@ urlpatterns = patterns(
     # Examples:
         url(r'^lists/$', 'list.views.index', name='index'),
     url(r'^lists/(?P<list_name>\w+)/$', 'list.views.detail'),
+    url(r'^lists/editamount', 'list.views.editamount'),
     # url(r'^shoppinglist/', include('shoppinglist.foo.urls')),
     
     # Uncomment the admin/doc line below to enable admin documentation:

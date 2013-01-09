@@ -1,7 +1,7 @@
 {% extends "list/base.html" %}
 {% block content %}
 {% if list %}
-<table class="table table-condensed table-bordered table-striped">
+<table class="table table-bordered table-striped">
   <thead>
     <tr>
       <th>Item</th>
@@ -11,19 +11,22 @@
   <tbody>
     {% for item in list.item_set.all %}
     <tr>
-      <td>{{ item.name }}</td>
-      <div><td id="editableamount" data-name="amount" data-placeholder="{{ item.amount }}" data-type="number" data-pk="{{ item.id }}" data-url="/post" data-original-title="Enter amount">{{ item.amount }}</td></div>
+      <td width="10%">{{ item.name }}</td>
+      <td width="30%"><a href="#" class="editableamount" data-name="amount" data-placeholder="{{ item.amount }}" data-type="number" data-pk="{{ item.id }}" data-url="/lists/editamount" data-original-title="Enter amount">{% csrf_token %}{{ item.amount }}</a></td>
     </tr>
     {% endfor %}
   </tbody>
 </table>
 {% endif %}
 
+<a href="#" id="username" data-type="text" data-pk="1" data-url="/post" data-original-title="Enter username">superuser</a>
+
 
 <link href="{{ STATIC_URL }}bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-<script src="{{ STATIC_URL }}bootstrap-editable/js/bootstrap-editable.js"></script>
+<script src="{{ STATIC_URL }}bootstrap-editable/js/bootstrap-editable-inline.js"></script>
 <script>
-  $('#editableamount').editable();
+  $('.editableamount').editable();
+  $('#username').editable();
 </script>
 
 {% endblock %}
