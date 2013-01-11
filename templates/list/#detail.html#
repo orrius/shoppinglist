@@ -50,6 +50,8 @@
   send: 'always'
   }
   );  
+  $('.newamount').on('save.newuser', function(){
+  
 </script>
 
 

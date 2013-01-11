@@ -1,7 +1,7 @@
 from django.template import Context, loader,RequestContext
 from django.http import HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404,render
-from list.models import ShoppingList
+from list.models import ShoppingList,Item
 
 # Create your views here.
 
@@ -15,7 +15,26 @@ def detail(request, list_name):
     #return render_to_response('list/detail.html', {'list': p})
 
 
-def editamount(request, pk, amount):
+def editamount(request):
+    if request.method == 'POST':
+        pk = request.POST['pk']
+        amount = request.POST['value']
+    else:
+        return HttpResponse(404)
     p = get_object_or_404(Item,id=pk)
-    p.update(amount=amount)
+    p.amount = amount
+    p.save()
+    return HttpResponse(200)
+
+def newitem(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        amount = request.POST['value']
+        list_pk = request.POST['list_pk']
+        print name
+        print amount
+    else:
+        return HttpResponse(404)
+    newitem = Item(name=name,amount=amount,shoppinglist=ShoppingList.objects.get(pk=list_pk))
+    newitem.save()
     return HttpResponse(200)
